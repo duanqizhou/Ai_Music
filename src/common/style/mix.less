@@ -1,0 +1,165 @@
+@primary: #fca639; // 主题色
+@orange: #ff6b01;
+@bc: #f7f7f7;
+@fc: #fff;
+@mainBg: #fafafa;
+// // 背景图片地址和大小
+.bis(@url) {
+  background-image: url(@url);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+
+// //圆角
+.borderRadius(@radius) {
+  -webkit-border-radius: @radius;
+  -moz-border-radius: @radius;
+  -ms-border-radius: @radius;
+  -o-border-radius: @radius;
+  border-radius: @radius;
+}
+
+// //1px底部边框
+.border-1px(@color) {
+  position: relative;
+  &:after {
+    display: block;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    border-top: 1px solid @color;
+    content: "";
+  }
+}
+// //定位全屏
+.allcover {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+// //定位上下左右居中
+.center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+// //定位上下居中
+.ct {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+// //定位左右居中
+.cl {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+// //宽高
+.wh(@width:100%, @height:100%) {
+  width: @width;
+  height: @height;
+}
+
+// //字体大小，颜色
+.sc(@size, @color) {
+  font-size: @size;
+  color: @color;
+}
+
+.boxSizing {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.absoluteCenter {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.flex {
+  display: flex;
+}
+.flex1 {
+  flex: 1;
+}
+.flex2 {
+  flex: 2;
+}
+.flex-col {
+  flex-direction: column;
+}
+.flex-c-c {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.flex-col-around {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+.flex-ali-b {
+  align-items: flex-end;
+}
+.flex-just-s {
+  justify-content: flex-start;
+}
+.flex-bet {
+  display: flex;
+  justify-content: space-between;
+}
+.flex-ali-c {
+  display: flex;
+  align-items: center;
+}
+
+.flex-wrap {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.flex-around {
+  display: flex;
+  justify-content: space-around;
+}
+.omit-1 {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.omit {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  overflow: hidden;
+  flex: 1;
+  line-height: 1.2;
+}
+.omit-n(@N: 2) {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: @N;
+  overflow: hidden;
+  flex: 1;
+  line-height: 1.2;
+}
+
+// //flex 布局和 子元素 对其方式
+.fj(@type: space-between) {
+  display: flex;
+  justify-content: @type;
+}
+
+.flex-col-bet(@type: space-between) {
+  display: flex;
+  flex-direction: column;
+  justify-content: @type;
+}

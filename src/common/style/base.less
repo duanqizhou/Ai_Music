@@ -1,0 +1,419 @@
+//移动端点击高亮
+@import "./mix.less";
+@import "./theme.less";
+
+@font-face {
+  font-family: "PingFang"; //重命名字体名
+  src: url("../fonts/PingFang.ttf"); //引入字体
+  font-weight: normal;
+  font-style: normal;
+}
+html,
+body {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+input {
+  border: none;
+  outline: none;
+  -webkit-appearance: none;
+  -webkit-appearance: none;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+textarea {
+  border: none;
+  outline: none;
+}
+button {
+  border: none;
+  outline: none;
+}
+a {
+  text-decoration: none;
+  color: #333;
+}
+li {
+  list-style-type: none;
+}
+//解决端遮罩层穿透
+body.dialog-open {
+  position: fixed;
+  width: 100%;
+}
+.page {
+  padding: 0 50px;
+  width: 100%;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+html,
+body,
+div,
+span,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+abbr,
+address,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+samp,
+small,
+strong,
+sub,
+sup,
+var,
+b,
+i,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section,
+summary,
+time,
+mark,
+audio,
+video,
+h1,
+h2,
+h3,
+h4,
+h5 {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  vertical-align: baseline;
+  background: transparent;
+  font-family: "PingFang";
+}
+
+body {
+  line-height: 1;
+}
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+
+nav ul {
+  list-style: none;
+}
+
+blockquote,
+q {
+  quotes: none;
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: "";
+  content: none;
+}
+
+a {
+  margin: 0;
+  padding: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  background: transparent;
+}
+i {
+  font-style: normal;
+  font-size: 12px;
+}
+
+/* change colours to suit your needs */
+ins {
+  background-color: #ff9;
+  color: #000;
+  text-decoration: none;
+}
+
+/* change colours to suit your needs */
+mark {
+  background-color: #ff9;
+  color: #000;
+  font-style: italic;
+  font-weight: bold;
+}
+
+del {
+  text-decoration: line-through;
+}
+
+abbr[title],
+dfn[title] {
+  border-bottom: 1px dotted;
+  cursor: help;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* change border colour to suit your needs */
+hr {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid #cccccc;
+  margin: 1em 0;
+  padding: 0;
+}
+
+input,
+select {
+  vertical-align: middle;
+}
+span {
+  font-size: 16px;
+}
+.text-right {
+  text-align: right;
+}
+.text-left {
+  text-align: left;
+}
+.text-center {
+  text-align: center;
+}
+.heel {
+  width: 100%;
+  height: 60px;
+}
+.link-icon-hidden {
+  display: inline-block;
+}
+.link-icon-show {
+  display: none;
+}
+.opa23 {
+  opacity: 0.23;
+}
+.opa5 {
+  opacity: 0.5;
+}
+.opa8 {
+  opacity: 0.8;
+}
+.opa95 {
+  opacity: 0.95;
+}
+// 设置 iphone 底部安全区
+/*
+env()和constant()函数有个必要的使用前提，H5网页设置viewport-fit=cover的时候才生效，小程序里的viewport-fit默认是cover。
+safe-area-inset-left：安全区域距离左边边界距离
+safe-area-inset-right：安全区域距离右边边界距离
+safe-area-inset-top：安全区域距离顶部边界距离
+safe-area-inset-bottom：安全区域距离底部边界距离
+*/
+@supports (bottom: env(safe-area-inset-bottom)) {
+  #app {
+    padding-bottom: constant(safe-area-inset-bottom);
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+}
+
+h3 {
+  font-size: 22px;
+  padding: 13px 0;
+}
+.dis-block {
+  display: block;
+}
+.fullh {
+  height: 100%;
+}
+.fullw {
+  width: 100%;
+}
+.fullw80 {
+  width: 80%;
+}
+.pR {
+  position: relative;
+}
+.pA {
+  position: absolute;
+}
+input {
+  border: none;
+  outline: none;
+  background: transparent;
+}
+.container {
+  padding: 0 16px;
+  box-sizing: border-box;
+  width: 100vw;
+}
+.cmain {
+  color: @primary;
+}
+.c333 {
+  color: #333;
+}
+.c9898AC {
+  color: #9898ac;
+}
+.cc5c5c9 {
+  color: #c5c5c9;
+}
+.white{
+  color: @white;
+}
+.red {
+  color: @red;
+}
+.wf600 {
+  font-weight: 600;
+}
+.fz-24 {
+  font-size: 24px;
+}
+.fz-20 {
+  font-size: 20px;
+}
+.fz-18 {
+  font-size: 18px;
+}
+
+.fz-14 {
+  font-size: 14px;
+}
+
+.fz-12 {
+  font-size: 12px;
+}
+
+.mt10 {
+  margin-top: 10px;
+}
+.mt20 {
+  margin-top: 20px;
+}
+.mt30 {
+  margin-top: 30px;
+}
+
+.mr5 {
+  margin-right: 5px;
+}
+.mr10 {
+  margin-right: 10px;
+}
+.mr20 {
+  margin-right: 20px;
+}
+.mr30 {
+  margin-right: 30px;
+}
+.mb10 {
+  margin-bottom: 10px;
+}
+
+.mb20 {
+  margin-bottom: 20px;
+}
+
+.mb30 {
+  margin-bottom: 30px;
+}
+.mb40 {
+  margin-bottom: 40px;
+}
+.ml3 {
+  margin-left: 3px;
+}
+.ml4 {
+  margin-left: 4px;
+}
+.ml5 {
+  margin-left: 5px;
+}
+.ml10 {
+  margin-left: 10px;
+}
+.ml20 {
+  margin-left: 20px;
+}
+.ml30 {
+  margin-left: 30px;
+}
+
+.ptb10 {
+  padding: 10px 0;
+}
+.ptb20 {
+  padding: 20px 0;
+}
+.pt20b10 {
+  padding: 20px 0 10px;
+}
+.ptb30 {
+  padding: 30px 0;
+}
+
+.p612{
+  padding: 6px 12px;
+}
+
+
+.bg-black{
+  background: @black;
+}
