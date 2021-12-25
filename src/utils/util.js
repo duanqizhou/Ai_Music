@@ -104,7 +104,7 @@ const msgFactory = function (msgLists) {
     }
     if (!_m.Sign) {
       if (_m?.id) {
-        _m.Sign = Symbol(_m?.id)
+        _m.Sign = (_m?.id)
       }
     }
     if (!_m.Time) {
@@ -125,6 +125,7 @@ const msgFactory = function (msgLists) {
     }
     return _m
   })
-  console.log('%c msgLists', 'font-size:13px; background:pink; color:#bf2c9f;', newmsg)
+
+  return newmsg
 }
 export { localData, sessionData, formatNumber, debounce, formatTime, msgFactory }

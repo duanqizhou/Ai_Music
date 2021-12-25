@@ -88,7 +88,6 @@ export default {
     const chatUser = markRaw(...store.state.chatUser)
     const onLoad = async () => {
       const list = await _getEventMsg()
-
       if (state.refreshing) {
         state.list = []
         state.refreshing = false
@@ -96,7 +95,6 @@ export default {
 
       if (list.code === 200) {
         state.list.push(...msgFactory(_.concat(state.list, chatUser, list.event)))
-        console.log('[ state.list ]', state.list)
       }
       state.loading = false
 
@@ -114,7 +112,6 @@ export default {
       onLoad()
     }
     const emitCuMsgH = (e, data) => {
-      // console.log("[ data ]", e, data);
     }
 
     return {

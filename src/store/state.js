@@ -19,9 +19,9 @@ export default {
   ],
   chatUser: [
     {
-      Avatar: 'assets/comment-icon.png',
+      Avatar: '@/assets/comment-icon.png',
       actName: '周段琦',
-      Sign: Symbol(Math.random * 100),
+      Sign: Math.random() * 100,
       Time: '今天10：00',
       msgs: [
         {
@@ -44,9 +44,9 @@ export default {
       }
     },
     {
-      Avatar: 'assets/friend.png',
+      Avatar: '@/assets/friend.png',
       actName: '付永雪',
-      Sign: Symbol(Math.random * 100),
+      Sign: (Math.random * 100),
       Time: '今天09：00',
       msgs: [
         {
@@ -62,9 +62,9 @@ export default {
       }
     },
     {
-      Avatar: 'assets/test.png',
+      Avatar: '@/assets/test.png',
       actName: '周段琦001',
-      Sign: Symbol(Math.random * 100),
+      Sign: (Math.random * 100),
       Time: '今天08：00',
       msgs: [],
       Msg: function () {
@@ -74,7 +74,7 @@ export default {
   ],
   music: [
     {
-      sign: Symbol(Math.random()),
+      sign: (Math.random()),
       name: '我的天空',
       artist: '电影《青春派》主题曲',
       source: 'http://96.ierge.cn/10/151/303606.mp3',

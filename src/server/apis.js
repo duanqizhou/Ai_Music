@@ -168,3 +168,13 @@ export function _toplistDetail () {
 export function _getEventMsg () {
   return $Http.get('/event')
 }
+
+/***************************************************/
+
+export function _likeList (uid) {
+  return $Http.get(`/user/playlist?uid=${uid}`)
+}
+
+export function _dailySignin () {
+  return $Http.get('/daily_signin')
+}
