@@ -168,3 +168,10 @@ export function _toplistDetail () {
 export function _getEventMsg () {
   return $Http.get('/event')
 }
+// 获取用户信息 , 歌单，收藏，mv, dj 数量
+export function _userSubcount () {
+  return $Http.get('/user/subcount')
+}
+export function _personalizedMv () {
+  return $Http.get('/personalized/mv')
+}

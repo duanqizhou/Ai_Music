@@ -16,7 +16,11 @@
                   radius="8"
                   width="55"
                   height="55"
-                  :src="(profile.avatarUrl) ? profile.avatarUrl : require('@/assets/' + avatar)"
+                  :src="
+                    profile.avatarUrl
+                      ? profile.avatarUrl
+                      : require('@/assets/' + avatar)
+                  "
                 />
               </van-col>
               <van-col span="12" class="span12">
@@ -38,16 +42,16 @@
           <van-skeleton title title-width="100%" :loading="loading">
             <van-row style="padding-bottom:12px;">
               <van-col span="8" class="text-center">
-                <h5>132</h5>
-                <span>我的关注</span>
+                <h5>1</h5>
+                <span>我的歌单</span>
               </van-col>
               <van-col span="8" class="text-center">
-                <h5>132</h5>
-                <span>我的粉丝</span></van-col
+                <h5>0</h5>
+                <span>我的收藏</span></van-col
               >
               <van-col span="8" class="text-center">
-                <h5>132</h5>
-                <span>我的好友</span></van-col
+                <h5>{{_mvCount}}/{{_djRadioCount}}</h5>
+                <span>MV/DJ</span></van-col
               >
             </van-row>
           </van-skeleton>
@@ -190,11 +194,12 @@
 </template>
 
 <script>
-import { defineAsyncComponent, ref } from 'vue'
+import { defineAsyncComponent, ref, onMounted } from 'vue'
 import { useStore } from 'vuex'
 import { useRoute, useRouter } from 'vue-router'
 import { Dialog } from 'vant'
 import { cuData } from '@/utils/constant'
+import { _userSubcount } from '@/server/apis'
 const navBar = defineAsyncComponent(() => import('@/components/NavBar'))
 const cuRow = defineAsyncComponent(() => import('@/components/CuRow'))
 
@@ -214,7 +219,7 @@ export default {
       tabsNavBackgroundColor: 'transparent',
       tabsDefaultColor: '#FF9F1A'
     }
-
+    console.log('[ 666 ]', 666)
     const active = ref(2)
     const loading = ref(false)
     const emitCuRowH = (data) => {
@@ -243,6 +248,19 @@ export default {
       router.go(0)
     }
 
+    const _djRadioCount = ref('')
+    const _mvCount = ref('')
+    onMounted(async () => {
+      const res = await _userSubcount()
+      if (res.code === 200) {
+        const { artistCount, createDjRadioCount, createdPlaylistCount, djRadioCount, mvCount } = res
+        _djRadioCount.value = String(djRadioCount)
+        _mvCount.value = String(mvCount)
+      }
+
+      console.log('[ _djRadioCount ]', _djRadioCount, _mvCount)
+    })
+
     return {
       emitCuRowH,
       changeLogin,
@@ -252,7 +270,9 @@ export default {
       themeVars,
       userInfo,
       profile,
-      createDays
+      createDays,
+      _djRadioCount,
+      _mvCount
     }
   }
 }

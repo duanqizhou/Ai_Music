@@ -118,7 +118,8 @@
 </template>
 
 <script>
-import { defineAsyncComponent, ref } from 'vue'
+import { defineAsyncComponent, ref, onMounted } from 'vue'
+import { _personalizedMv } from '@/server/apis'
 const navBar = defineAsyncComponent(() => import('@/components/NavBar'))
 const cuRow = defineAsyncComponent(() => import('@/components/CuRow'))
 
@@ -153,6 +154,11 @@ export default {
       tabsNavBackgroundColor: 'transparent',
       tabsDefaultColor: '#FF9F1A'
     }
+
+    onMounted(async () => {
+      const recomMv = await _personalizedMv()
+      console.log('%c recom_mv', 'font-size:13px; background:pink; color:#bf2c9f;', recomMv)
+    })
 
     return {
       createSerchValue,
