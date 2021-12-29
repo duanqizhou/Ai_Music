@@ -88,7 +88,6 @@ export default {
     const chatUser = markRaw(...store.state.chatUser)
     const onLoad = async () => {
       const list = await _getEventMsg()
-
       if (state.refreshing) {
         state.list = []
         state.refreshing = false

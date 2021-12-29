@@ -175,3 +175,12 @@ export function _userSubcount () {
 export function _personalizedMv () {
   return $Http.get('/personalized/mv')
 }
+/***************************************************/
+
+export function _likeList (uid) {
+  return $Http.get(`/user/playlist?uid=${uid}`)
+}
+
+export function _dailySignin () {
+  return $Http.get('/daily_signin')
+}

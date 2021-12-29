@@ -25,12 +25,12 @@
               </van-col>
               <van-col span="12" class="span12">
                 <p>
-                  <span class="name">破蛋{{ createDays || "-" }}</span>
+                  <span class="name">破蛋{{ createDays || '-' }}</span>
                   <van-tag color="#FF3333"
-                    >LV {{ userInfo?.level || "0" }}</van-tag
+                    >LV {{ userInfo?.level || '0' }}</van-tag
                   >
                 </p>
-                <p>{{ profile?.nickname || "-" }}</p>
+                <p>{{ profile?.nickname || '-' }}</p>
               </van-col>
               <van-col span="6">
                 <van-tag color="#EAEAF0" size="large" @click="changeLogin"
@@ -59,9 +59,9 @@
 
         <van-skeleton title title-width="100%" :loading="loading" class="mb20">
           <van-row>
-            <van-col span="11" class="bgFAE9DF bg-def">
+            <van-col @click="dailySignin" span="11" class="bgFAE9DF bg-def">
               <div>
-                <h5>任务中心</h5>
+                <h5>签到中心</h5>
                 <span>签到领鲜花</span>
               </div>
               <van-image
@@ -197,9 +197,9 @@
 import { defineAsyncComponent, ref, onMounted } from 'vue'
 import { useStore } from 'vuex'
 import { useRoute, useRouter } from 'vue-router'
-import { Dialog } from 'vant'
+import { Dialog, Toast } from 'vant'
 import { cuData } from '@/utils/constant'
-import { _userSubcount } from '@/server/apis'
+import { _likeList, _dailySignin, _userSubcount } from '@/server/apis'
 const navBar = defineAsyncComponent(() => import('@/components/NavBar'))
 const cuRow = defineAsyncComponent(() => import('@/components/CuRow'))
 
@@ -222,13 +222,20 @@ export default {
     console.log('[ 666 ]', 666)
     const active = ref(2)
     const loading = ref(false)
+
     const emitCuRowH = (data) => {
       console.log(
         '%c [ FFFdata ]',
-        'font-size:13px; background:pink; color:#bf2c9f;',
-        data
+        'font-size:13px; background:pink; color:#bf2c9f;', +data
       )
     }
+    const dailySignin = async () => {
+      const sign = await _dailySignin()
+      if (sign.code === 200) {
+        Toast('今日签到成功~')
+      }
+    }
+
     const changeLogin = async () => {
       if (!userInfo.token) {
         router.push('login')
@@ -279,7 +286,7 @@ export default {
 </script>
 
 <style lang="less" scoped>
-@import url("@/common/style/mix.less");
+@import url('@/common/style/mix.less');
 h5 {
   font-size: 18px;
 }
